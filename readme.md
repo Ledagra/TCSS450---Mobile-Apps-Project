@@ -1,7 +1,7 @@
 # Mobile App Project (Name TBD)
 
 ## Authors
-Fred Xu, Andrew Lau, Hon Lin, and Stephen VanLuven
+Fred Xu, Andrew Lau, Hon Lin, Niaz Ahamed, and Stephen VanLuven
 
 # Project Description
 Mobile application project on Android OS for course TCSS450 at University of Washington Tacoma.
