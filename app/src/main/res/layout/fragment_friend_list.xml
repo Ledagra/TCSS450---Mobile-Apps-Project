@@ -5,10 +5,17 @@
     android:layout_height="match_parent"
     tools:context=".ui.friends.FriendListFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <ListView
+        android:id="@+id/simple_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@color/material_blue_grey_800"
+        android:dividerHeight="1dp"
+        android:footerDividersEnabled="false"/>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:text="" />
 
 </FrameLayout>
