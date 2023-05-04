@@ -119,29 +119,28 @@ public class SignInFragment extends Fragment {
      * @param response the Response from the server
      */
     private void observeResponse(final JSONObject response) {
-        navigateToSuccess("svanlu", new String());
-//        if (response.length() > 0) {
-//            if (response.has("code")) {
-//                try {
-//                    binding.editEmail.setError(
-//                            "Error Authenticating: " +
-//                                    response.getJSONObject("data").getString("message"));
-//                } catch (JSONException e) {
-//                    Log.e("JSON Parse Error", e.getMessage());
-//                }
-//            } else {
-//                try {
-//                    navigateToSuccess(
-//                            binding.editEmail.getText().toString(),
-//                            response.getString("token")
-//                    );
-//                } catch (JSONException e) {
-//                    Log.e("JSON Parse Error", e.getMessage());
-//                }
-//            }
-//        } else {
-//            Log.d("JSON Response", "No Response");
-//        }
+        if (response.length() > 0) {
+            if (response.has("code")) {
+                try {
+                    binding.editEmail.setError(
+                            "Error Authenticating: " +
+                                    response.getJSONObject("data").getString("message"));
+                } catch (JSONException e) {
+                    Log.e("JSON Parse Error", e.getMessage());
+                }
+            } else {
+                try {
+                    navigateToSuccess(
+                            binding.editEmail.getText().toString(),
+                            response.getString("token")
+                    );
+                } catch (JSONException e) {
+                    Log.e("JSON Parse Error", e.getMessage());
+                }
+            }
+        } else {
+            Log.d("JSON Response", "No Response");
+        }
 
     }
 }
