@@ -11,13 +11,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import edu.uw.tcss450.lab3_authentication.R;
-
-public class FriendListFragment extends Fragment {
+/**
+ * Fragment to display a list of friends.
+ */
+public final class FriendListFragment extends Fragment {
+    /** String variable for first parameter. */
     private String param1;
+    /** String variable for second parameter. */
     private String param2;
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             param1 = getArguments().getString("param1");
@@ -26,18 +29,24 @@ public class FriendListFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater,
-                             ViewGroup container,
-                             Bundle savedInstanceState)
-    {
+    public View onCreateView(final LayoutInflater inflater,
+                             final ViewGroup container,
+                             final Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_friend_list,
                 container, false);
     }
-
-    public static FriendListFragment newInstance(String param1,
-                                            String param2)
-    {
+    /**
+     * Method to create a new instance of
+     * FriendListFragment.
+     *
+     * @param param1 Parameter 1.
+     * @param param2 Parameter 2.
+     * @return A new instance of fragment
+     * FriendListFragment.
+     */
+    public static FriendListFragment newInstance(final String param1,
+                                            final String param2) {
         FriendListFragment fragment = new FriendListFragment();
         Bundle args = new Bundle();
         args.putString("param1", param1);
@@ -47,9 +56,8 @@ public class FriendListFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(View view,
-                              Bundle savedInstanceState)
-    {
+    public void onViewCreated(final View view,
+                              final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         // getting the employeelist

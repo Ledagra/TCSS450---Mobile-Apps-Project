@@ -13,32 +13,33 @@ import android.view.ViewGroup;
 
 import edu.uw.tcss450.lab3_authentication.R;
 import edu.uw.tcss450.lab3_authentication.databinding.FragmentHomeBinding;
-import edu.uw.tcss450.lab3_authentication.databinding.FragmentRegisterBinding;
 import edu.uw.tcss450.lab3_authentication.model.UserInfoViewModel;
 
 /**
- * A simple {@link Fragment} subclass.
+ * Home fragment for the app.
  */
-public class HomeFragment extends Fragment {
-
+public final class HomeFragment extends Fragment {
+    /** Constructor for HomeFragment. */
     public HomeFragment() {
         // Required empty public constructor
     }
 
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater,
+                             final ViewGroup container,
+                             final Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull final View view,
+                              @Nullable final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         UserInfoViewModel model = new ViewModelProvider(getActivity())
                 .get(UserInfoViewModel.class);
 
-        FragmentHomeBinding.bind(getView()).textHello.setText("Hello " + model.getEmail());
+        FragmentHomeBinding.bind(getView())
+                .textHello.setText("Hello " + model.getEmail());
     }
 }
