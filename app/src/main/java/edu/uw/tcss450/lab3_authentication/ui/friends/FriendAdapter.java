@@ -14,8 +14,8 @@ import edu.uw.tcss450.lab3_authentication.R;
 public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.MyViewHolder> {
     private ArrayList<Friend> mFriendList;
 
-    public FriendAdapter(ArrayList<Friend> emplist) {
-        this.mFriendList = emplist;
+    public FriendAdapter(ArrayList<Friend> friendList) {
+        this.mFriendList = friendList;
     }
 
     // This method creates a new ViewHolder object for each item in the RecyclerView
