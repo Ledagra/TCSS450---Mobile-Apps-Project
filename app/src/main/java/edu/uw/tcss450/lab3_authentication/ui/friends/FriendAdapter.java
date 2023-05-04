@@ -31,7 +31,7 @@ public final class FriendAdapter extends
     public MyViewHolder onCreateViewHolder(final ViewGroup parent,
                                            final int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_friend_list, parent, false);
+                .inflate(R.layout.items_list, parent, false);
         return new MyViewHolder(itemView);
     }
 
