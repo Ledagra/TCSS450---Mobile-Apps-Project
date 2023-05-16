@@ -19,6 +19,7 @@
         android:id="@+id/hourly_forecast_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="25dp"
         android:text="Hourly Forecast"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +31,8 @@
         android:text="Daily Forecast"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hourly_forecast_recycler_view" />
+        app:layout_constraintTop_toBottomOf="@+id/hourly_forecast_recycler_view"
+        android:textSize="25dp"/>
 
     <TextView
         android:id="@+id/curr_location_temp"
@@ -59,19 +61,8 @@
         android:text="Location Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/weatherSearchView" />
-
-    <SearchView
-        android:id="@+id/weatherSearchView"
-
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="680dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </SearchView>
+        app:layout_constraintTop_toBottomOf="@id/current_weather_icon"
+        tools:layout_editor_absoluteY="128dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/hourly_forecast_recycler_view"
@@ -80,7 +71,10 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hourly_forecast_text"
         tools:layout_editor_absoluteY="605dp"
-        tools:listitem=""/>
+        tools:listitem="@layout/daily_weather_card_item"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_centerVertical="true" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/daily_forecast_recycler_view"
@@ -88,5 +82,39 @@
         android:layout_height="125dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/daily_forecast_text"
-        tools:layout_editor_absoluteY="605dp" />
+        tools:layout_editor_absoluteY="605dp"
+        tools:listitem="@layout/daily_weather_card_item"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_centerVertical="true"/>
+
+    <TextView
+        android:id="@+id/weather_json"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Weather JSON"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/daily_forecast_recycler_view" />
+
+    <TextView
+        android:id="@+id/json_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="{JSON INFO}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/weather_json" />
+
+    <ImageView
+        android:id="@+id/current_weather_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_banner_foreground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

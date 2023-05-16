@@ -103,7 +103,7 @@ public final class FriendListFragment extends Fragment {
         // Set the LayoutManager that
         // this RecyclerView will use.
         RecyclerView recyclerView
-                = view.findViewById(R.id.recycleView);
+                = view.findViewById(R.id.friend_recycleView);
         recyclerView.setLayoutManager(layoutManager);
 //
 //        // adapter instance is set to the

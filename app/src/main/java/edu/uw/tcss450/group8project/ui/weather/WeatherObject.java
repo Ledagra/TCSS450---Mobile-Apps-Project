@@ -2,10 +2,10 @@ package edu.uw.tcss450.group8project.ui.weather;
 
 public class WeatherObject {
     private String mLocation;
-    private double mTemp;
+    private String mTemp;
     private String mDescription;
 
-    public WeatherObject(String location, double temp, String description) {
+    public WeatherObject(String location, String temp, String description) {
         this.mLocation = location;
         this.mTemp = temp;
         this.mDescription = description;
@@ -15,7 +15,7 @@ public class WeatherObject {
         return mLocation;
     }
 
-    public double getTemp() {
+    public String getTemp() {
         return mTemp;
     }
 
