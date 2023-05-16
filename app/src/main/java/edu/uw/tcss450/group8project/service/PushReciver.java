@@ -47,10 +47,10 @@ public class PushReceiver extends BroadcastReceiver {
         ActivityManager.getMyMemoryState(appProcessInfo);
 
         if (appProcessInfo.importance == IMPORTANCE_FOREGROUND || appProcessInfo.importance == IMPORTANCE_VISIBLE) {
-            //app is in the foreground so send the message to the active Activities
+            
             Log.d("PUSHY", "Message received in foreground: " + message);
 
-            //create an Intent to broadcast a message to other parts of the app.
+            
             Intent i = new Intent(RECEIVED_NEW_MESSAGE);
             i.putExtra("chatMessage", message);
             i.putExtra("chatid", chatId);
@@ -68,8 +68,7 @@ public class PushReceiver extends BroadcastReceiver {
             PendingIntent pendingIntent = PendingIntent.getActivity(context, 0,
                     i, PendingIntent.FLAG_UPDATE_CURRENT);
 
-            //research more on notifications the how to display them
-            //https://developer.android.com/guide/topics/ui/notifiers/notifications
+            
             NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
                     .setAutoCancel(true)
                     .setSmallIcon(R.drawable.ic_message_notification)
