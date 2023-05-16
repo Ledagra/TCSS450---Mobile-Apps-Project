@@ -17,9 +17,9 @@
         tools:layout="@layout/fragment_friend_list" />
     <fragment
         android:id="@+id/navigation_messages"
-        android:name="edu.uw.tcss450.group8project.ui.messages.MessagesFragment"
+        android:name="edu.uw.tcss450.group8project.ui.messages.MessagesListFragment"
         android:label="@string/title_messages"
-        tools:layout="@layout/fragment_messages" />
+        tools:layout="@layout/fragment_messages_list" />
     <fragment
         android:id="@+id/navigation_weather"
         android:name="edu.uw.tcss450.group8project.ui.weather.WeatherFragment"
