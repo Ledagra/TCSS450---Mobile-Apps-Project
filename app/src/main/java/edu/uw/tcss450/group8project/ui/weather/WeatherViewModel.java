@@ -48,7 +48,8 @@ public class WeatherViewModel extends AndroidViewModel {
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
-        Volley.newRequestQueue(getApplication().getApplicationContext()).add(request);
+        Volley.newRequestQueue(getApplication()
+                .getApplicationContext()).add(request);
     }
 
     private void handleError(VolleyError volleyError) {
