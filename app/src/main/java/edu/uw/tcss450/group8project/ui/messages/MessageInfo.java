@@ -2,7 +2,7 @@ package edu.uw.tcss450.group8project.ui.messages;
 
 import java.util.ArrayList;
 
-public class MessageInfo {
+public final class MessageInfo {
 
 
 
