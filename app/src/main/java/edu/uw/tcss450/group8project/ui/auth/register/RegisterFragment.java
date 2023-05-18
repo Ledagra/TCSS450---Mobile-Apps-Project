@@ -3,12 +3,16 @@ package edu.uw.tcss450.group8project.ui.auth.register;
 import static edu.uw.tcss450.group8project.utils.PasswordValidator.*;
 import static edu.uw.tcss450.group8project.utils.PasswordValidator.checkClientPredicate;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.ActionOnlyNavDirections;
+import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
 import android.util.Log;
@@ -19,6 +23,7 @@ import android.view.ViewGroup;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import edu.uw.tcss450.group8project.R;
 import edu.uw.tcss450.group8project.databinding.FragmentRegisterBinding;
 import edu.uw.tcss450.group8project.utils.PasswordValidator;
 
@@ -28,7 +33,7 @@ import edu.uw.tcss450.group8project.utils.PasswordValidator;
  */
 public final class RegisterFragment extends Fragment {
     /** Minimum length for a password. */
-    private static final int MIN_PASSWORD_LENGTH = 7;
+    private static final int MIN_PASSWORD_LENGTH = 8;
     /** Binding object for fragment_register.xml. */
 
     private FragmentRegisterBinding binding;
@@ -110,10 +115,23 @@ public final class RegisterFragment extends Fragment {
         mNameValidator.processResult(
                 mNameValidator.apply(binding.editLast
                         .getText().toString().trim()),
-                this::validateEmail,
+                this::validateUsername,
                 result -> binding.editLast
                         .setError("Please enter a last name."));
     }
+
+    /**
+     * Method that validates username.
+     */
+    private void validateUsername() {
+        mNameValidator.processResult(
+                mNameValidator.apply(binding.editUser
+                        .getText().toString().trim()),
+                this::validateEmail,
+                result -> binding.editUser
+                        .setError("Please enter a username."));
+    }
+
     /**
      * Method that validates email.
      */
@@ -159,26 +177,41 @@ public final class RegisterFragment extends Fragment {
         mRegisterModel.connect(
                 binding.editFirst.getText().toString(),
                 binding.editLast.getText().toString(),
+                binding.editUser.getText().toString(),
                 binding.editEmail.getText().toString(),
                 binding.editPassword1.getText().toString());
-
-
-
     }
+
     /**
-     * Method that navigates to login page.
+     * Method that navigates to account verification page.
      */
-    private void navigateToLogin() {
-        RegisterFragmentDirections
-                .ActionRegisterFragmentToLoginFragment directions =
-                RegisterFragmentDirections
-                        .actionRegisterFragmentToLoginFragment();
+    private void navigateToAccountVerification() {
+        AlertDialog alert = new AlertDialog.Builder(getActivity()).create();
+            alert.setCancelable(false);
+            alert.setTitle(getActivity().getString(R.string.account_verification_title));
+            alert.setMessage(getActivity().getString(R.string.account_verification_message));
+            alert.setButton(DialogInterface.BUTTON_NEUTRAL
+                    , getActivity().getString(R.string.action_sign_in_short)
+                    , new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    RegisterFragmentDirections.ActionRegisterFragmentToLoginFragment directions =
+                            RegisterFragmentDirections.actionRegisterFragmentToLoginFragment();
 
-        directions.setEmail(binding.editEmail.getText().toString());
-        directions.setPassword(binding.editPassword1.getText().toString());
+                    directions.setEmail(binding.editEmail.getText().toString());
+                    directions.setPassword(binding.editPassword1.getText().toString());
 
-        Navigation.findNavController(getView()).navigate(directions);
+                    Navigation.findNavController(getView()).navigate(directions);
+                }
+            });
+            alert.show();
 
+
+
+
+//        Navigation.findNavController(getView())
+//                .navigate(RegisterFragmentDirections
+//                        .actionRegisterFragmentToAccountVerificationFragment(email, jwt, username));
     }
 
     /**
@@ -199,7 +232,8 @@ public final class RegisterFragment extends Fragment {
                     Log.e("JSON parse error", e.getMessage());
                 }
             } else {
-                navigateToLogin();
+                navigateToAccountVerification();
+
             }
         } else {
             Log.d("JSON response", "No response");

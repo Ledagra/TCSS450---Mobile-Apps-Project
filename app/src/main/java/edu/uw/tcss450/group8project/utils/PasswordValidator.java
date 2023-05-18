@@ -25,7 +25,7 @@ public interface PasswordValidator
      * @return a validator that validates the length of the String as > 6
      */
     static PasswordValidator checkPwdLength() {
-        return checkPwdLength(6);
+        return checkPwdLength(8);
     }
 
     /**

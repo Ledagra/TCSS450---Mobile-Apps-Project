@@ -1,8 +1,6 @@
 package edu.uw.tcss450.group8project.ui.weather;
 
 import android.util.Log;
-import android.view.View;
-import android.widget.TextView;
 
 import androidx.lifecycle.MutableLiveData;
 
@@ -11,15 +9,6 @@ import com.android.volley.toolbox.JsonObjectRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
-
-import edu.uw.tcss450.group8project.R;
 
 public class GetRealWeatherData {
     private MutableLiveData<JSONObject> mDataResponse;
@@ -47,13 +36,12 @@ public class GetRealWeatherData {
             Log.w("JSON ERROR", e.toString());
         }
 
-        Request request = new JsonObjectRequest();
+//        Request<JSONObject> request = new JsonObjectRequest();
 
 
-        )
     }
 
-    public String getRawJSON() {
-        return mDataResponse;
-    }
+//    public String getRawJSON() {
+//        return mDataResponse;
+//    }
 }

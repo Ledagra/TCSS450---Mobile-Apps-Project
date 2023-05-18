@@ -41,6 +41,6 @@ public final class WeatherFragment extends Fragment {
 
         GetRealWeatherData getRealWeatherData = new GetRealWeatherData("98391");
 
-        jsonView.setText(getRealWeatherData.getRawJSON());
+//        jsonView.setText(getRealWeatherData.getRawJSON());
     }
 }

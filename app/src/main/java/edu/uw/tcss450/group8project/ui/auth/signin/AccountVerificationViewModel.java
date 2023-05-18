@@ -25,11 +25,11 @@ import java.util.Objects;
 
 import edu.uw.tcss450.group8project.io.RequestQueueSingleton;
 
-public class SignInViewModel extends AndroidViewModel {
+public class AccountVerificationViewModel extends AndroidViewModel {
 
     private MutableLiveData<JSONObject> mResponse;
 
-    public SignInViewModel(@NonNull Application application) {
+    public AccountVerificationViewModel(@NonNull Application application) {
         super(application);
         mResponse = new MutableLiveData<>();
         mResponse.setValue(new JSONObject());
@@ -40,9 +40,9 @@ public class SignInViewModel extends AndroidViewModel {
         mResponse.observe(owner, observer);
     }
 
-    public void connect(final String email, final String password) {
+    public void connect(final String email, final String username, final String jwt) {
 
-        String url = "https://huskytalk.herokuapp.com/auth";
+        String url = "https://huskytalk.herokuapp.com/verify/" + username + "/" + jwt;
 
         Request request = new JsonObjectRequest(
                 Request.Method.GET,
@@ -53,8 +53,8 @@ public class SignInViewModel extends AndroidViewModel {
             @Override
             public Map<String, String> getHeaders() {
                 Map<String, String> headers = new HashMap<>();
-                //add headers <email, password>
-                String credentials = email + ":" + password;
+                //add headers <email, jwt>
+                String credentials = email + ":" + jwt;
                 String auth = "Basic "
                         + Base64.encodeToString(credentials.getBytes(),
                         Base64.NO_WRAP);
@@ -94,5 +94,4 @@ public class SignInViewModel extends AndroidViewModel {
             }
         }
     }
-
 }
