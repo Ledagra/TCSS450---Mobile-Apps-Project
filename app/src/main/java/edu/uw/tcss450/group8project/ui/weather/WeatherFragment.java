@@ -49,7 +49,7 @@ public final class WeatherFragment extends Fragment {
     @Override
     public void onViewCreated(final View view, final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        
         mBinding.searchLocationButton.setOnClickListener(button -> searchLocation());
     }
 
