@@ -7,6 +7,24 @@
     android:layout_height="match_parent"
     tools:context=".ui.weather.WeatherFragment">
 
+    <EditText
+        android:id="@+id/search_location"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        app:layout_constraintEnd_toStartOf="@+id/search_location_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/search_location_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="Search Location"
+        android:padding="12.5dp"
+        android:src="@drawable/ic_search_black_24dp"
+        app:layout_constraintRight_toLeftOf="@id/current_location_button"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/curr_location_con"
         android:layout_width="wrap_content"
@@ -115,6 +133,7 @@
         android:src="@mipmap/ic_banner_foreground"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/search_location"
+        tools:layout_editor_absoluteY="49dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

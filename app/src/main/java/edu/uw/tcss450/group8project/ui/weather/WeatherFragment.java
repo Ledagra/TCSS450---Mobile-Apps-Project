@@ -2,7 +2,10 @@ package edu.uw.tcss450.group8project.ui.weather;
 
 import android.os.Bundle;
 
+import android.app.Application;
+
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,30 +20,54 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import edu.uw.tcss450.group8project.R;
+import edu.uw.tcss450.group8project.databinding.FragmentWeatherBinding;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public final class WeatherFragment extends Fragment {
-    private MockWeatherData mMockWeatherData;
-    private String mRawJSON;
+
+    private WeatherViewModel mViewModel;
+
+    private FragmentWeatherBinding mBinding;
+
+    @Override
+    public void onCreate(final Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mViewModel = new ViewModelProvider(getActivity())
+                .get(WeatherViewModel.class);
+    }
 
     @Override
     public View onCreateView(final LayoutInflater inflater,
                              final ViewGroup container,
                              final Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_weather, container, false);
+        mBinding = FragmentWeatherBinding.inflate(inflater);
+        return mBinding.getRoot();
     }
 
     @Override
     public void onViewCreated(final View view, final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        TextView jsonView = view.findViewById(R.id.json_info);
-
-        GetRealWeatherData getRealWeatherData = new GetRealWeatherData("98391");
-
-        jsonView.setText(getRealWeatherData.getRawJSON());
+        mBinding.searchLocationButton.setOnClickListener(button -> searchLocation());
     }
+
+    private void searchLocation() {
+        String test = mBinding.searchLocation.getText().toString();
+
+        boolean toContinue = validateZipCode(test);
+
+        if(toContinue) {
+            Log.i("Valid ZIP", test);
+            mViewModel.talkToAPI(test);
+        } else {
+            Log.w("Invalid ZIP", "Invalid ZIP");
+        }
+    }
+
+    private boolean validateZipCode(final String theZip) {
+        return theZip.length() == 5 && theZip.matches("[0-9]+");
+    }
+
 }

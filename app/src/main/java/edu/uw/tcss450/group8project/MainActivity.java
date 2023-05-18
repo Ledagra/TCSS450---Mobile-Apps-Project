@@ -13,19 +13,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
-import android.view.View;
 import android.widget.SearchView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-
 import edu.uw.tcss450.group8project.model.UserInfoViewModel;
-import edu.uw.tcss450.group8project.R;
-import edu.uw.tcss450.group8project.ui.weather.GetRealWeatherData;
+import edu.uw.tcss450.group8project.ui.weather.WeatherViewModel;
 
 /**
  * Main Activity for the app.
@@ -70,31 +63,6 @@ public final class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(final Menu menu) {
         getMenuInflater().inflate(R.menu.toolbar, menu);
-
-//        SearchManager searchManager = (SearchManager)
-//                getSystemService(Context.SEARCH_SERVICE);
-//        SearchView searchView = (SearchView)
-//                menu.findItem(R.id.action_search).getActionView();
-//        searchView.setSearchableInfo(
-//                searchManager.getSearchableInfo(getComponentName()));
         return true;
     }
-
-//    @Override
-//    public void onNewIntent(final Intent intent) {
-//        super.onNewIntent(intent);
-//        handleIntent(intent);
-//    }
-
-//    private void handleIntent(final Intent intent) {
-//        String query = "";
-//        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-//            query = intent.getStringExtra(SearchManager.QUERY);
-//            Log.w("Search Query Entered: ", query);
-//        }
-//
-//        View weatherView = findViewById(R.id.navigation_weather);
-//
-//        new GetRealWeatherData(query, weatherView);
-//    }
 }
