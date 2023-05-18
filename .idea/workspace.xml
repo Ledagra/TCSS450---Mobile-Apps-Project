@@ -9,6 +9,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="2ba79527-51c9-462d-b771-69ec20622102" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/app/src/main/java/edu/uw/tcss450/group8project/ui/auth/signin/AccountVerificationFragment.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/src/main/java/edu/uw/tcss450/group8project/ui/auth/signin/AccountVerificationViewModel.java" afterDir="false" />
@@ -30,6 +31,9 @@
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
+=======
+    <list default="true" id="2ba79527-51c9-462d-b771-69ec20622102" name="Changes" comment="" />
+>>>>>>> acbd2362f7aedb7b5218d07ed9acc70660bbaeab
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -106,6 +110,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "PROJECT_TRUSTED_KEY": "true",
@@ -133,6 +138,24 @@
       <recent name="edu.uw.tcss450.group8project.ui.auth.signin" />
     </key>
   </component>
+=======
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;PROJECT_TRUSTED_KEY&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;android-custom-view/Users/ledagra/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.4.0-beta01/4609f0eac57d146f2f30d34a6288a469235a32ca/material-1.4.0-beta01-sources.jar!/com/google/android/material/navigation/NavigationBarView.java_SELECTED&quot;: &quot;NavigationBarView&quot;,
+    &quot;android-custom-view/Users/ledagra/Library/Android/sdk/sources/android-33/android/view/View.java_SELECTED&quot;: &quot;View&quot;,
+    &quot;android-custom-view/Users/ledagra/Library/Android/sdk/sources/android-33/android/view/ViewGroup.java_SELECTED&quot;: &quot;ViewGroup&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;com.intellij.openapi.externalSystem.service.settings.ExternalSystemGroupConfigurable&quot;: &quot;ALL&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/ledagra/Desktop/Team-8-TCSS-450&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Mercurial&quot;
+  }
+}</component>
+>>>>>>> acbd2362f7aedb7b5218d07ed9acc70660bbaeab
   <component name="RunManager">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="Group8Project.app.main" />
