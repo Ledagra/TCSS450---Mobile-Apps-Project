@@ -5,9 +5,12 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 
 import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -15,6 +18,9 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class WeatherViewModel extends AndroidViewModel {
     private MutableLiveData<JSONObject> mDataResponse;
@@ -25,21 +31,20 @@ public class WeatherViewModel extends AndroidViewModel {
         mDataResponse.setValue(new JSONObject());
     }
 
-    public void talkToAPI(String zipCode) {
+    public void addResponseObserver(@NonNull LifecycleOwner owner,
+                                    @NonNull Observer<? super JSONObject> observer) {
+        mDataResponse.observe(owner, observer);
+    }
+
+    public void talkToAPI(final String zipCode){
         String url = "https://huskytalk.herokuapp.com/weatherForecast";
 
-        JSONObject body = new JSONObject();
+        Map<String, String> bodyInit = new HashMap<>();
+        bodyInit.put("location", zipCode);
 
-        try {
-            body.put("location", zipCode);
-        } catch (JSONException e) {
-            Log.w("JSON ERROR", e.toString());
-        }
-
-        Request request = new JsonObjectRequest(
-                Request.Method.GET,
+        JsonObjectRequest request = new JsonObjectRequest(
                 url,
-                body,
+                new JSONObject(bodyInit),
                 mDataResponse::setValue,
                 this::handleError);
 
@@ -52,7 +57,11 @@ public class WeatherViewModel extends AndroidViewModel {
                 .getApplicationContext()).add(request);
     }
 
-    private void handleError(VolleyError volleyError) {
-        Log.e("CONNECTION ERROR", volleyError.toString());
+    private void handleError(@NonNull VolleyError volleyError) {
+        NetworkResponse networkResponse = volleyError.networkResponse;
+        if (networkResponse != null && networkResponse.data != null) {
+            String jsonError = new String(networkResponse.data);
+            Log.e("Volley Error: ", jsonError);
+        }
     }
 }

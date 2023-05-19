@@ -36,6 +36,12 @@ public final class WeatherFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mViewModel = new ViewModelProvider(getActivity())
                 .get(WeatherViewModel.class);
+
+        mViewModel.addResponseObserver(this, list -> {
+            TextView tv = getView().findViewById(R.id.json_info);
+
+            tv.setText(list.toString());
+        });
     }
 
     @Override
