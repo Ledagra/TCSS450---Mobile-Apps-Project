@@ -20,7 +20,11 @@
     <string name="current_location">Current Location</string>
     <string name="search_hint">Enter Location</string>
     <string name="account_verification_title">Verify Your Email Address</string>
-    <string name="account_verification_message">Your account cannot be used until your email address has been verified. To verify your email address, please follow the link that was sent to your email address. </string>
+    <string name="account_verification_message">Your account cannot be used until
+        your email address has been verified. To verify your email address, please
+        follow the link that was sent to your email address. </string>
+    <string name="celsius">°C</string>
+    <string name="fahrenheit">°F</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

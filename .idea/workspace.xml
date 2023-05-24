@@ -10,14 +10,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0c725ed6-c699-4bfa-92d7-46cdc966bec1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/edu/uw/tcss450/group8project/ui/weather/HourlyWeatherAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/uw/tcss450/group8project/ui/weather/WeatherAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/uw/tcss450/group8project/ui/weather/DailyWeatherAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/uw/tcss450/group8project/ui/weather/WeatherFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/uw/tcss450/group8project/ui/weather/WeatherFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/uw/tcss450/group8project/ui/weather/WeatherObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/uw/tcss450/group8project/ui/weather/WeatherObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/uw/tcss450/group8project/ui/weather/WeatherViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/uw/tcss450/group8project/ui/weather/WeatherViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_weather.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_weather.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/hourly_weather_card_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/hourly_weather_card_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/ledagra/.android/avd/Pixel_5_API_33.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[32021FDH30000W]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />

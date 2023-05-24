@@ -36,6 +36,14 @@ public class WeatherViewModel extends AndroidViewModel {
         mDataResponse.observe(owner, observer);
     }
 
+    public MutableLiveData<JSONObject> getResponse() {
+        return mDataResponse;
+    }
+
+    public int getResponseSize() {
+        return mDataResponse.getValue().length();
+    }
+
     public void talkToAPI(final String zipCode){
         String url = "https://huskytalk.herokuapp.com/weatherForecast";
 
