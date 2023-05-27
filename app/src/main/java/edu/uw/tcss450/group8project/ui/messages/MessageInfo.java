@@ -15,16 +15,16 @@ public final class MessageInfo {
 
         ArrayList<Message> messageList = new ArrayList<>();
 
-        Message exp1 = new Message("Adam", "How are you?", "_________________________________________________");
-        Message exp2 = new Message("Bob", "How are you?", "_________________________________________________");
-        Message exp3 = new Message("Carl", "How are you?", "_________________________________________________");
-        Message exp4 = new Message("David", "How are you?", "_________________________________________________");
-        Message exp5 = new Message("Fred", "How are you?", "_________________________________________________");
-        Message exp6 = new Message("George", "How are you?", "_________________________________________________");
-        Message exp7 = new Message("Harry", "How are you?", "_________________________________________________");
-        Message exp8 = new Message("Ian", "How are you?", "_________________________________________________");
-        Message exp9 = new Message("Jake", "How are you?", "_________________________________________________");
-        Message exp10 = new Message("Kyle", "How are you?", "_________________________________________________");
+        Message exp1 = new Message("Adam", "How are you?", "1 min ago");
+        Message exp2 = new Message("Bob", "How are you?", "yesterday");
+        Message exp3 = new Message("Carl", "How are you?", "2 mins ago");
+        Message exp4 = new Message("David", "How are you?", "1 hour ago");
+        Message exp5 = new Message("Fred", "How are you?", "2 hours ago");
+        Message exp6 = new Message("George", "How are you?", "38 mins ago");
+        Message exp7 = new Message("Harry", "How are you?", "40 mins ago");
+        Message exp8 = new Message("Ian", "How are you?", "3 mins ago");
+        Message exp9 = new Message("Jake", "How are you?", "2 days ago");
+        Message exp10 = new Message("Kyle", "How are you?", "1 week ago");
 
         messageList.add(exp1);
         messageList.add(exp2);

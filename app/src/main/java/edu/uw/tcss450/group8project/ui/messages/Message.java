@@ -6,12 +6,15 @@ public class Message implements Serializable {
 
     private final String name;
     private final String recentText;
-    private final String divider;
 
-    Message(String name, String recentText, String divider){
+    private final String recentTime;
+
+
+    Message(String name, String recentText, String recentTime){
         this.name = name;
         this.recentText = recentText;
-        this.divider = divider;
+        this.recentTime = recentTime;
+
     }
 
     public String getName() {
@@ -22,7 +25,6 @@ public class Message implements Serializable {
         return recentText;
     }
 
-    public String getDivider() {
-        return divider;
-    }
+    public String getTime() {return recentTime;}
+
 }

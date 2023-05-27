@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.Navigation;
@@ -38,7 +39,6 @@ public final class MessagesListFragment extends Fragment {
         if(getArguments() != null){
             param1 = getArguments().getString("param1");
             param2 = getArguments().getString("param2");
-            param3 = getArguments().getString("param3");
         }
 
 
@@ -66,7 +66,7 @@ public final class MessagesListFragment extends Fragment {
         Log.w("MessagesListFragment", "onViewCreated: " + messageList.size());
         Log.w("MessagesListFragment", "onViewCreated: " + messageList.get(0).getName());
         Log.w("MessagesListFragment", "onViewCreated: " + messageList.get(0).getRecentText());
-        Log.w("MessagesListFragment", "onViewCreated: " + messageList.get(0).getDivider());
+        Log.w("MessagesListFragment", "onViewCreated: " + messageList.get(0).getTime());
 
 
         MessageAdapter messageAdapter = new MessageAdapter(messageList);
@@ -78,14 +78,17 @@ public final class MessagesListFragment extends Fragment {
 
         recyclerView.setAdapter(messageAdapter);
 
-        ImageButton imageButton = (ImageButton) view.findViewById(R.id.addButton);
-        imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.chat_layout);
-            }
+        //handling the image button to create a new chatroom
+//        ImageButton imageButton = view.findViewById(R.id.addButton);
+//        imageButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //Navigation.findNavController(view).navigate(R.id.chat_layout);
+//            }
+//
+//        });
 
-        });
+
 
     }
 

@@ -6,6 +6,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -25,6 +27,16 @@ public class MessageAdapter extends
     @Override
     public MessageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.messages_item, parent, false);
+
+        //handling the CardView when clicked to open the chatroom associate with the recipient/group
+        CardView cardView = itemView.findViewById(R.id.messageListCardView);
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //move to the chatroom fragment associated with the chatid
+                Navigation.findNavController(itemView).navigate(R.id.action_navigation_messages_to_chatFragment2);
+            }
+        });
         return new MessageViewHolder(itemView);
     }
 
@@ -35,7 +47,7 @@ public class MessageAdapter extends
 
         holder.name.setText(currentMessage.getName());
         holder.recentText.setText(currentMessage.getRecentText());
-        holder.divider.setText(currentMessage.getDivider());
+        holder.recentTime.setText(currentMessage.getTime());
     }
 
     @Override
@@ -48,12 +60,13 @@ public class MessageAdapter extends
         private TextView name;
         private TextView recentText;
 
-        private TextView divider;
+        private TextView recentTime;
+
         public MessageViewHolder(final View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.name);
             recentText = itemView.findViewById(R.id.recentText);
-            divider = itemView.findViewById(R.id.divider);
+            recentTime = itemView.findViewById(R.id.recentTime);
         }
 
     }
