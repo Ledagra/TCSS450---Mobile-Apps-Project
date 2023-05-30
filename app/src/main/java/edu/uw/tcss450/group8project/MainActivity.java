@@ -37,7 +37,8 @@ import edu.uw.tcss450.group8project.R;
 import edu.uw.tcss450.group8project.services.PushReceiver;
 import edu.uw.tcss450.group8project.ui.chat.ChatMessage;
 import edu.uw.tcss450.group8project.ui.chat.ChatViewModel;
-import edu.uw.tcss450.group8project.ui.weather.GetRealWeatherData;
+import edu.uw.tcss450.group8project.model.UserInfoViewModel;
+import edu.uw.tcss450.group8project.ui.weather.WeatherViewModel;
 
 /**
  * Main Activity for the app.
@@ -141,13 +142,6 @@ public final class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(final Menu menu) {
         getMenuInflater().inflate(R.menu.toolbar, menu);
-
-//        SearchManager searchManager = (SearchManager)
-//                getSystemService(Context.SEARCH_SERVICE);
-//        SearchView searchView = (SearchView)
-//                menu.findItem(R.id.action_search).getActionView();
-//        searchView.setSearchableInfo(
-//                searchManager.getSearchableInfo(getComponentName()));
         return true;
     }
 

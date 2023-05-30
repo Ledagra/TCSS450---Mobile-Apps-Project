@@ -9,31 +9,24 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-<<<<<<< HEAD
-    <list default="true" id="2ba79527-51c9-462d-b771-69ec20622102" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/edu/uw/tcss450/group8project/ui/auth/signin/AccountVerificationFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/edu/uw/tcss450/group8project/ui/auth/signin/AccountVerificationViewModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_account_verification.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="0c725ed6-c699-4bfa-92d7-46cdc966bec1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/edu/uw/tcss450/group8project/ui/weather/HourlyWeatherAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/edu/uw/tcss450/group8project/ui/weather/WeatherViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/uw/tcss450/group8project/ui/auth/register/RegisterFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/uw/tcss450/group8project/ui/auth/register/RegisterFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/uw/tcss450/group8project/ui/auth/register/RegisterViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/uw/tcss450/group8project/ui/auth/register/RegisterViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/uw/tcss450/group8project/ui/auth/signin/SignInViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/uw/tcss450/group8project/ui/auth/signin/SignInViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/uw/tcss450/group8project/ui/weather/GetRealWeatherData.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/uw/tcss450/group8project/ui/weather/GetRealWeatherData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/uw/tcss450/group8project/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/uw/tcss450/group8project/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/uw/tcss450/group8project/ui/weather/GetRealWeatherData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/uw/tcss450/group8project/ui/weather/MockWeatherData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/uw/tcss450/group8project/ui/weather/WeatherAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/uw/tcss450/group8project/ui/weather/DailyWeatherAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/uw/tcss450/group8project/ui/weather/WeatherFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/uw/tcss450/group8project/ui/weather/WeatherFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/uw/tcss450/group8project/utils/PasswordValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/uw/tcss450/group8project/utils/PasswordValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_auth.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_auth.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_register.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_register.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_sign_in.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_sign_in.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/auth_graph.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/auth_graph.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/uw/tcss450/group8project/ui/weather/WeatherObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/uw/tcss450/group8project/ui/weather/WeatherObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_weather.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_weather.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/hourly_weather_card_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/hourly_weather_card_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/bottom_nav_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/bottom_nav_menu.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/toolbar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/toolbar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
-=======
-    <list default="true" id="2ba79527-51c9-462d-b771-69ec20622102" name="Changes" comment="" />
->>>>>>> acbd2362f7aedb7b5218d07ed9acc70660bbaeab
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -110,7 +103,6 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-<<<<<<< HEAD
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "PROJECT_TRUSTED_KEY": "true",
@@ -124,38 +116,9 @@
     "cidr.known.project.marker": "true",
     "com.intellij.openapi.externalSystem.service.settings.ExternalSystemGroupConfigurable": "ALL",
     "last_opened_file_path": "C:/Users/xuzha/Desktop/TCSS450/HuskyTalk/Team-8-TCSS-450",
-    "project.structure.last.edited": "SDK Location",
-    "project.structure.proportion": "0.17",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
+    "settings.editor.selected.configurable": "vcs.Mercurial"
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="edu.uw.tcss450.group8project.ui.auth.register" />
-    </key>
-    <key name="android.template.598839541">
-      <recent name="edu.uw.tcss450.group8project.ui.auth.signin" />
-    </key>
-  </component>
-=======
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;PROJECT_TRUSTED_KEY&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;android-custom-view/Users/ledagra/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.4.0-beta01/4609f0eac57d146f2f30d34a6288a469235a32ca/material-1.4.0-beta01-sources.jar!/com/google/android/material/navigation/NavigationBarView.java_SELECTED&quot;: &quot;NavigationBarView&quot;,
-    &quot;android-custom-view/Users/ledagra/Library/Android/sdk/sources/android-33/android/view/View.java_SELECTED&quot;: &quot;View&quot;,
-    &quot;android-custom-view/Users/ledagra/Library/Android/sdk/sources/android-33/android/view/ViewGroup.java_SELECTED&quot;: &quot;ViewGroup&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;com.intellij.openapi.externalSystem.service.settings.ExternalSystemGroupConfigurable&quot;: &quot;ALL&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/ledagra/Desktop/Team-8-TCSS-450&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Mercurial&quot;
-  }
-}</component>
->>>>>>> acbd2362f7aedb7b5218d07ed9acc70660bbaeab
   <component name="RunManager">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="Group8Project.app.main" />
@@ -232,7 +195,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="2ba79527-51c9-462d-b771-69ec20622102" name="Changes" comment="" />
+      <changelist id="0c725ed6-c699-4bfa-92d7-46cdc966bec1" name="Changes" comment="" />
       <created>1682888651570</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />

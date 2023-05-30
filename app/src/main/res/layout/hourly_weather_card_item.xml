@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/layout_hourly_weather_card_item"
-    android:layout_width="175dp"
+    android:layout_width="200dp"
     android:layout_height="wrap_content"
     android:gravity="center_horizontal"
     android:orientation="horizontal"
@@ -11,31 +11,33 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="180dp"
-        android:layout_height="match_parent" >
+        android:layout_height="105dp"
+        app:cardCornerRadius="10dp"
+        android:elevation="100dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:gravity="center_horizontal">
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/card_forecast_hour"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Forecast Hour" />
+                android:text="Forecast Day" />
 
             <TextView
                 android:id="@+id/card_forecast_temp"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hour Temp" />
+                android:text="Day Temp" />
 
             <TextView
                 android:id="@+id/card_forecast_con"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hour Conditions" />
+                android:text="Day Conditions" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>
