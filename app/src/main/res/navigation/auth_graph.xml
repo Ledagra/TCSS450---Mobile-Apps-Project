@@ -26,15 +26,6 @@
             android:defaultValue="default" />
     </fragment>
     <fragment
-        android:id="@+id/accountVerificationFragment"
-        android:name="edu.uw.tcss450.group8project.ui.auth.signin.AccountVerificationFragment"
-        android:label="fragment_account_verification"
-        tools:layout="@layout/fragment_account_verification" >
-        <action
-            android:id="@+id/action_accountVerificationFragment_to_mainActivity"
-            app:destination="@id/mainActivity" />
-    </fragment>
-    <fragment
         android:id="@+id/registerFragment"
         android:name="edu.uw.tcss450.group8project.ui.auth.register.RegisterFragment"
         android:label="fragment_register"

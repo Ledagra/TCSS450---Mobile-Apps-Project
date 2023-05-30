@@ -42,7 +42,4 @@ public class UserInfoViewModel extends ViewModel {
                     "Argument must be: " + UserInfoViewModel.class);
         }
     }
-
-
 }
-

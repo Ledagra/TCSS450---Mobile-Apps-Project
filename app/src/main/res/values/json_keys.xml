@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="keys_json_chat_response">response</string>
+    <string name="keys_json_chat_success">success</string>
+    <string name="keys_json_chat_name">name</string>
+    <string name="keys_json_chat_previews">previews</string>
+    <string name="keys_json_chat_timestamp">timestamp</string>
+    <string name="keys_json_chat_chatname">name</string>
+    <string name="keys_json_chat_preview">message</string>
+
+</resources>
