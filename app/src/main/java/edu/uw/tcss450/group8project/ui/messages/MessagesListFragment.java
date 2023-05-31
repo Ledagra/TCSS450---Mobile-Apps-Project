@@ -79,14 +79,14 @@ public final class MessagesListFragment extends Fragment {
         recyclerView.setAdapter(messageAdapter);
 
         //handling the image button to create a new chatroom
-//        ImageButton imageButton = view.findViewById(R.id.addButton);
-//        imageButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                //Navigation.findNavController(view).navigate(R.id.chat_layout);
-//            }
-//
-//        });
+        ImageButton imageButton = view.findViewById(R.id.addButton);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_navigation_messages_to_creatChatRoomDialog2);
+            }
+
+        });
 
 
 
