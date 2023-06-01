@@ -1,6 +1,5 @@
-# file: ~/.gitignore_global
 .DS_Store
-.gradle/
+.gradle
 .idea
-local.properties
+.gitignore
 .idea/workspace.xml

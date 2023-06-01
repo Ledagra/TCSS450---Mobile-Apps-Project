@@ -16,11 +16,34 @@
         android:label="@string/title_friends"
         tools:layout="@layout/fragment_friend_list" />
     <fragment
+        android:id="@+id/navigation_messages"
+        android:name="edu.uw.tcss450.group8project.ui.messages.MessagesListFragment"
+        android:label="@string/title_messages"
+        tools:layout="@layout/fragment_messages_list" >
+        <action
+            android:id="@+id/action_navigation_messages_to_chatFragment2"
+            app:destination="@id/chatFragment" />
+        <action
+            android:id="@+id/action_navigation_messages_to_creatChatRoomDialog2"
+            app:destination="@id/creatChatRoomDialog2" />
+    </fragment>
+    <fragment
+
         android:id="@+id/navigation_weather"
         android:name="edu.uw.tcss450.group8project.ui.weather.WeatherFragment"
         android:label="@string/title_weather"
         tools:layout="@layout/fragment_weather" />
     <fragment
+
+        android:id="@+id/chatFragment"
+        android:name="edu.uw.tcss450.group8project.ui.chat.ChatFragment"
+        android:label="chat_fragment"
+        tools:layout="@layout/chat_fragment" />
+    <dialog
+        android:id="@+id/creatChatRoomDialog2"
+        android:name="edu.uw.tcss450.group8project.ui.chat.CreatChatRoomDialog"
+        android:label="CreatChatRoomDialog" />
+
         android:id="@+id/navigation_chatlist"
         android:name="edu.uw.tcss450.group8project.ui.chat.ChatListFragment"
         android:label="fragment_chat_list"
