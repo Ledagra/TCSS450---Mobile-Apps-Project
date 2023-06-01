@@ -43,7 +43,7 @@
         android:id="@+id/creatChatRoomDialog2"
         android:name="edu.uw.tcss450.group8project.ui.chat.CreatChatRoomDialog"
         android:label="CreatChatRoomDialog" />
-
+    <fragment
         android:id="@+id/navigation_chatlist"
         android:name="edu.uw.tcss450.group8project.ui.chat.ChatListFragment"
         android:label="fragment_chat_list"
