@@ -8,55 +8,57 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import edu.uw.tcss450.group8project.R;
 
-public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.MyViewHolder> {
-    private JSONArray mWeatherData;
+public class DailyWeatherAdapter extends RecyclerView.Adapter<DailyWeatherAdapter.MyViewHolder> {
 
-    private String mRawJSON;
+    private WeatherObject[] mDailyWeather;
 
-    public WeatherAdapter(JSONObject weatherData) {
-        mRawJSON = weatherData.toString();
+
+    public DailyWeatherAdapter(final WeatherObject[] theDailyWeather) {
+        mDailyWeather = theDailyWeather;
     }
 
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View hourlyView = View.inflate(parent.getContext(),
+        View dailyView = View.inflate(parent.getContext(),
                 R.layout.daily_weather_card_item, null);
 
-        return new MyViewHolder(hourlyView);
+        return new MyViewHolder(dailyView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder holder,
                                  final int position) {
-        holder.mJSONInfo.setText(mRawJSON);
+
+        holder.setDailyWeather(mDailyWeather[position]);
 
 
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mDailyWeather.length - 1;
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        private TextView mDate;
+        private TextView mDay;
         private TextView mTemp;
         private TextView mCondition;
 
-        private TextView mJSONInfo;
-
         public MyViewHolder(final View itemView) {
             super(itemView);
-            mDate = itemView.findViewById(R.id.card_forecast_day);
+            mDay = itemView.findViewById(R.id.card_forecast_day);
             mTemp = itemView.findViewById(R.id.card_forecast_temp);
             mCondition = itemView.findViewById(R.id.card_forecast_con);
+        }
+
+        public void setDailyWeather(WeatherObject theDay) {
+            mDay.setText(theDay.getDate());
+            mTemp.setText(theDay.getTemperature() + " °C");
+            mCondition.setText(theDay.getCondition());
         }
 
     }

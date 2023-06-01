@@ -2,6 +2,8 @@ package edu.uw.tcss450.group8project.ui.auth.signin;
 
 import static edu.uw.tcss450.group8project.utils.PasswordValidator.*;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,10 +17,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.auth0.android.jwt.JWT;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import edu.uw.tcss450.group8project.R;
 import edu.uw.tcss450.group8project.databinding.FragmentSignInBinding;
+import edu.uw.tcss450.group8project.model.PushyTokenViewModel;
+import edu.uw.tcss450.group8project.model.UserInfoViewModel;
 import edu.uw.tcss450.group8project.utils.PasswordValidator;
 
 /**
@@ -26,7 +33,9 @@ import edu.uw.tcss450.group8project.utils.PasswordValidator;
  */
 public class SignInFragment extends Fragment {
 
-    private FragmentSignInBinding binding;
+    private FragmentSignInBinding mBinding;
+    private PushyTokenViewModel mPushyTokenViewModel;
+    private UserInfoViewModel mUserViewModel;
     private SignInViewModel mSignInModel;
 
     private PasswordValidator mEmailValidator = checkPwdLength(2)
@@ -45,34 +54,65 @@ public class SignInFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mSignInModel = new ViewModelProvider(getActivity())
                 .get(SignInViewModel.class);
+        mPushyTokenViewModel = new ViewModelProvider(getActivity())
+                .get(PushyTokenViewModel.class);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentSignInBinding.inflate(inflater);
+        mBinding = FragmentSignInBinding.inflate(inflater);
         // Inflate the layout for this fragment
-        return binding.getRoot();
+        return mBinding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.buttonToRegister.setOnClickListener(button ->
+        mBinding.buttonToRegister.setOnClickListener(button ->
             Navigation.findNavController(getView()).navigate(
                     SignInFragmentDirections.actionLoginFragmentToRegisterFragment()
             ));
 
-        binding.buttonSignIn.setOnClickListener(this::attemptSignIn);
+        mBinding.buttonSignIn.setOnClickListener(this::attemptSignIn);
 
         mSignInModel.addResponseObserver(
                 getViewLifecycleOwner(),
-                this::observeResponse);
+                this::observeSignInResponse);
 
         SignInFragmentArgs args = SignInFragmentArgs.fromBundle(getArguments());
-        binding.editEmail.setText(args.getEmail().equals("default") ? "" : args.getEmail());
-        binding.editPassword.setText(args.getPassword().equals("default") ? "" : args.getPassword());
+        mBinding.editEmail.setText(args.getEmail().equals("default") ? "" : args.getEmail());
+        mBinding.editPassword.setText(args.getPassword().equals("default") ? "" : args.getPassword());
+
+        //don't allow sign in until pushy token retrieved
+        mPushyTokenViewModel.addTokenObserver(getViewLifecycleOwner(), token ->
+                mBinding.buttonSignIn.setEnabled(!token.isEmpty()));
+
+        mPushyTokenViewModel.addResponseObserver(
+                getViewLifecycleOwner(),
+                this::observePushyPutResponse);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        SharedPreferences prefs =
+                getActivity().getSharedPreferences(
+                        getString(R.string.keys_shared_prefs),
+                        Context.MODE_PRIVATE);
+        if (prefs.contains(getString(R.string.keys_prefs_jwt))) {
+            String token = prefs.getString(getString(R.string.keys_prefs_jwt), "");
+            JWT jwt = new JWT(token);
+            // Check to see if the web token is still valid or not. To make a JWT expire after a
+            // longer or shorter time period, change the expiration time when the JWT is
+            // created on the web service.
+            if(!jwt.isExpired(0)) {
+                String email = jwt.getClaim("email").asString();
+                navigateToSuccess(email, token);
+                return;
+            }
+        }
     }
 
     private void attemptSignIn(final View button) {
@@ -81,24 +121,22 @@ public class SignInFragment extends Fragment {
 
     private void validateEmail() {
         mEmailValidator.processResult(
-                mEmailValidator.apply(binding.editEmail.getText().toString().trim()),
+                mEmailValidator.apply(mBinding.editEmail.getText().toString().trim()),
                 this::validatePassword,
-                result -> binding.editEmail.setError("Please enter a valid Email address."));
+                result -> mBinding.editEmail.setError("Please enter a valid Email address."));
     }
 
     private void validatePassword() {
         mPassWordValidator.processResult(
-                mPassWordValidator.apply(binding.editPassword.getText().toString()),
+                mPassWordValidator.apply(mBinding.editPassword.getText().toString()),
                 this::verifyAuthWithServer,
-                result -> binding.editPassword.setError("Please enter a valid Password."));
+                result -> mBinding.editPassword.setError("Please enter a valid Password."));
     }
 
     private void verifyAuthWithServer() {
         mSignInModel.connect(
-                binding.editEmail.getText().toString(),
-                binding.editPassword.getText().toString());
-
-
+                mBinding.editEmail.getText().toString(),
+                mBinding.editPassword.getText().toString());
     }
 
     /**
@@ -107,9 +145,19 @@ public class SignInFragment extends Fragment {
      * @param jwt the JSON Web Token supplied by the server
      */
     private void navigateToSuccess(final String email, final String jwt) {
+        if (mBinding.switchSignin.isChecked()) {
+            SharedPreferences prefs =
+                    getActivity().getSharedPreferences(
+                            getString(R.string.keys_shared_prefs),
+                            Context.MODE_PRIVATE);
+            //Store the credentials in SharedPrefs
+            prefs.edit().putString(getString(R.string.keys_prefs_jwt), jwt).apply();
+        }
         Navigation.findNavController(getView())
                 .navigate(SignInFragmentDirections
                         .actionLoginFragmentToMainActivity(email, jwt));
+        //Remove THIS activity from the Task list. Pops off the backstack
+        getActivity().finish();
     }
 
     /**
@@ -118,11 +166,11 @@ public class SignInFragment extends Fragment {
      *
      * @param response the Response from the server
      */
-    private void observeResponse(final JSONObject response) {
+    private void observeSignInResponse(final JSONObject response) {
         if (response.length() > 0) {
             if (response.has("code")) {
                 try {
-                    binding.editEmail.setError(
+                    mBinding.editEmail.setError(
                             "Error Authenticating: " +
                                     response.getJSONObject("data").getString("message"));
                 } catch (JSONException e) {
@@ -130,10 +178,12 @@ public class SignInFragment extends Fragment {
                 }
             } else {
                 try {
-                    navigateToSuccess(
-                            binding.editEmail.getText().toString(),
-                            response.getString("token")
-                    );
+                    mUserViewModel = new ViewModelProvider(getActivity(),
+                            new UserInfoViewModel.UserInfoViewModelFactory(
+                                    mBinding.editEmail.getText().toString(),
+                                    response.getString("token")
+                            )).get(UserInfoViewModel.class);
+                    sendPushyToken();
                 } catch (JSONException e) {
                     Log.e("JSON Parse Error", e.getMessage());
                 }
@@ -142,5 +192,33 @@ public class SignInFragment extends Fragment {
             Log.d("JSON Response", "No Response");
         }
 
+    }
+
+    /**
+     * Helper to abstract the request to send the pushy token to the web service
+     */
+    private void sendPushyToken() {
+        mPushyTokenViewModel.sendTokenToWebservice(mUserViewModel.getmJwt());
+    }
+
+    /**
+     * An observer on the HTTP Response from the web server. This observer should be
+     * attached to PushyTokenViewModel.
+     *
+     * @param response the Response from the server
+     */
+    private void observePushyPutResponse(final JSONObject response) {
+        if (response.length() > 0) {
+            if (response.has("code")) {
+                //this error cannot be fixed by the user changing credentials...
+                mBinding.editEmail.setError(
+                        "Error Authenticating on Push Token. Please contact support");
+            } else {
+                navigateToSuccess(
+                        mBinding.editEmail.getText().toString(),
+                        mUserViewModel.getmJwt()
+                );
+            }
+        }
     }
 }

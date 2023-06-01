@@ -35,7 +35,8 @@ public class ChatViewModel extends AndroidViewModel {
      * The Key represents the Chat ID
      * The value represents the List of (known) messages for that that room.
      */
-    private Map<Integer, MutableLiveData<List<ChatMessages>>> mMessages;
+
+    private Map<Integer, MutableLiveData<List<ChatMessage>>> mMessages;
 
     public ChatViewModel(@NonNull Application application) {
         super(application);
@@ -50,7 +51,8 @@ public class ChatViewModel extends AndroidViewModel {
      */
     public void addMessageObserver(int chatId,
                                    @NonNull LifecycleOwner owner,
-                                   @NonNull Observer<? super List<ChatMessages>> observer) {
+
+                                   @NonNull Observer<? super List<ChatMessage>> observer) {
         getOrCreateMapEntry(chatId).observe(owner, observer);
     }
 
@@ -65,11 +67,12 @@ public class ChatViewModel extends AndroidViewModel {
      * @param chatId the id of the chat room List to retrieve
      * @return a reference to the list of messages
      */
-    public List<ChatMessages> getMessageListByChatId(final int chatId) {
+
+    public List<ChatMessage> getMessageListByChatId(final int chatId) {
         return getOrCreateMapEntry(chatId).getValue();
     }
 
-    private MutableLiveData<List<ChatMessages>> getOrCreateMapEntry(final int chatId) {
+    private MutableLiveData<List<ChatMessage>> getOrCreateMapEntry(final int chatId) {
         if(!mMessages.containsKey(chatId)) {
             mMessages.put(chatId, new MutableLiveData<>(new ArrayList<>()));
         }
@@ -88,7 +91,8 @@ public class ChatViewModel extends AndroidViewModel {
      * @param jwt the users signed JWT
      */
     public void getFirstMessages(final int chatId, final String jwt) {
-        String url = getApplication().getResources().getString(R.string.base_url) +
+
+        String url = getApplication().getResources().getString(R.string.heroku_url) +
                 "messages/" + chatId;
 
         Request request = new JsonObjectRequest(
@@ -131,7 +135,8 @@ public class ChatViewModel extends AndroidViewModel {
      * @param jwt the users signed JWT
      */
     public void getNextMessages(final int chatId, final String jwt) {
-        String url = getApplication().getResources().getString(R.string.base_url) +
+
+        String url = getApplication().getResources().getString(R.string.heroku_url) +
                 "messages/" +
                 chatId +
                 "/" +
@@ -170,14 +175,16 @@ public class ChatViewModel extends AndroidViewModel {
      * @param chatId
      * @param message
      */
-    public void addMessage(final int chatId, final ChatMessages message) {
-        List<ChatMessages> list = getMessageListByChatId(chatId);
+
+    public void addMessage(final int chatId, final ChatMessage message) {
+        List<ChatMessage> list = getMessageListByChatId(chatId);
         list.add(message);
         getOrCreateMapEntry(chatId).setValue(list);
     }
 
     private void handelSuccess(final JSONObject response) {
-        List<ChatMessages> list;
+
+        List<ChatMessage> list;
         if (!response.has("chatId")) {
             throw new IllegalStateException("Unexpected response in ChatViewModel: " + response);
         }
@@ -186,7 +193,8 @@ public class ChatViewModel extends AndroidViewModel {
             JSONArray messages = response.getJSONArray("rows");
             for(int i = 0; i < messages.length(); i++) {
                 JSONObject message = messages.getJSONObject(i);
-                ChatMessages cMessage = new ChatMessages(
+
+                ChatMessage cMessage = new ChatMessage(
                         message.getInt("messageid"),
                         message.getString("message"),
                         message.getString("email"),

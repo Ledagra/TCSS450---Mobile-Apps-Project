@@ -28,11 +28,13 @@
             app:destination="@id/creatChatRoomDialog2" />
     </fragment>
     <fragment
+
         android:id="@+id/navigation_weather"
         android:name="edu.uw.tcss450.group8project.ui.weather.WeatherFragment"
         android:label="@string/title_weather"
         tools:layout="@layout/fragment_weather" />
     <fragment
+
         android:id="@+id/chatFragment"
         android:name="edu.uw.tcss450.group8project.ui.chat.ChatFragment"
         android:label="chat_fragment"
@@ -41,4 +43,18 @@
         android:id="@+id/creatChatRoomDialog2"
         android:name="edu.uw.tcss450.group8project.ui.chat.CreatChatRoomDialog"
         android:label="CreatChatRoomDialog" />
+
+        android:id="@+id/navigation_chatlist"
+        android:name="edu.uw.tcss450.group8project.ui.chat.ChatListFragment"
+        android:label="fragment_chat_list"
+        tools:layout="@layout/fragment_chat_list" >
+        <action
+            android:id="@+id/action_chatListFragment_to_chatFragment"
+            app:destination="@id/navigation_chat" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_chat"
+        android:name="edu.uw.tcss450.group8project.ui.chat.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" />
 </navigation>
