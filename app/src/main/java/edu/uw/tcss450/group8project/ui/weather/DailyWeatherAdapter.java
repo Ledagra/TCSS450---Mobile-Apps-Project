@@ -33,12 +33,14 @@ public class DailyWeatherAdapter extends RecyclerView.Adapter<DailyWeatherAdapte
     public void onBindViewHolder(@NonNull final MyViewHolder holder,
                                  final int position) {
 
+        holder.setDailyWeather(mDailyWeather[position]);
+
 
     }
 
     @Override
     public int getItemCount() {
-        return mDailyWeather.length;
+        return mDailyWeather.length - 1;
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
@@ -51,6 +53,12 @@ public class DailyWeatherAdapter extends RecyclerView.Adapter<DailyWeatherAdapte
             mDay = itemView.findViewById(R.id.card_forecast_day);
             mTemp = itemView.findViewById(R.id.card_forecast_temp);
             mCondition = itemView.findViewById(R.id.card_forecast_con);
+        }
+
+        public void setDailyWeather(WeatherObject theDay) {
+            mDay.setText(theDay.getDate());
+            mTemp.setText(theDay.getTemperature() + " °C");
+            mCondition.setText(theDay.getCondition());
         }
 
     }

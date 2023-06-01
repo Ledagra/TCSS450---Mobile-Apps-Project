@@ -107,24 +107,13 @@
         android:layout_centerVertical="true"/>
 
     <TextView
-        android:id="@+id/weather_json"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Weather JSON"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/daily_forecast_recycler_view" />
-
-    <TextView
         android:id="@+id/json_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scrollbars="vertical"
-        android:text="{JSON INFO}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/weather_json" />
+        app:layout_constraintTop_toBottomOf="@id/daily_forecast_recycler_view" />
 
     <ImageView
         android:id="@+id/current_weather_icon"

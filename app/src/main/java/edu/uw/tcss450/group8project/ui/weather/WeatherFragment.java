@@ -46,14 +46,13 @@ public final class WeatherFragment extends Fragment {
             TextView cityName = getView().findViewById(R.id.curr_location_name);
             TextView currentTemp = getView().findViewById(R.id.curr_location_temp);
             TextView currentCondition = getView().findViewById(R.id.curr_location_con);
-            RecyclerView dailyRecyclerView = getView().findViewById(R.id.daily_forecast_recycler_view);
-
             TextView jsonTextView = getView().findViewById(R.id.json_info);
-            try{
-                jsonTextView.setText(list.getJSONArray("daily").toString());
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+
+//            try{
+//                jsonTextView.setText(list.getJSONArray("daily").toString());
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
 
 
             if(mViewModel.getResponseSize() > 0) {
