@@ -65,34 +65,6 @@ public class ChatFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
-        //onclick send
-        ImageButton sendButton = view.findViewById(R.id.button_send);
-        sendButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                //send message
-            }
-        });
-
-        //onclick clear
-        ImageButton clearButton = view.findViewById(R.id.clear_button);
-        clearButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //clear all messages
-            }
-        });
-
-        //onclick delete
-        ImageButton deleteButton = view.findViewById(R.id.delete_button);
-        deleteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //delete the chatroom
-            }
-        });
-
         FragmentChatBinding binding = FragmentChatBinding.bind(getView());
 
         //SetRefreshing shows the internal Swiper view progress bar. Show this until messages load
@@ -134,5 +106,25 @@ public class ChatFragment extends Fragment {
         //when we get the response back from the server, clear the edittext
         mSendModel.addResponseObserver(getViewLifecycleOwner(), response ->
                 binding.editMessage.setText(""));
+
+
+
+//        //onclick clear
+//        ImageButton clearButton = view.findViewById(R.id.clear_button);
+//        clearButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //clear all messages
+//            }
+//        });
+//
+//        //onclick delete
+//        ImageButton deleteButton = view.findViewById(R.id.delete_button);
+//        deleteButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //delete the chatroom
+//            }
+//        });
     }
 }
