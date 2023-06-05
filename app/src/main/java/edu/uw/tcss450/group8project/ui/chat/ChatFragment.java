@@ -1,16 +1,23 @@
 package edu.uw.tcss450.group8project.ui.chat;
 
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import androidx.navigation.Navigation;
+import edu.uw.tcss450.group8project.R;
+
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
@@ -114,5 +121,25 @@ public class ChatFragment extends Fragment {
         //when we get the response back from the server, clear the edittext
         mSendModel.addResponseObserver(getViewLifecycleOwner(), response ->
                 binding.editMessage.setText(""));
+
+
+
+//        //onclick clear
+//        ImageButton clearButton = view.findViewById(R.id.clear_button);
+//        clearButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //clear all messages
+//            }
+//        });
+//
+//        //onclick delete
+//        ImageButton deleteButton = view.findViewById(R.id.delete_button);
+//        deleteButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //delete the chatroom
+//            }
+//        });
     }
 }

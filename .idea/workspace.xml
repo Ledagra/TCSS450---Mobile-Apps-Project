@@ -10,6 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0c725ed6-c699-4bfa-92d7-46cdc966bec1" name="Changes" comment="">
+<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/app/src/main/java/edu/uw/tcss450/group8project/model/ChatInfoViewModel.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/src/main/java/edu/uw/tcss450/group8project/ui/chat/ChatCreateFragment.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/src/main/java/edu/uw/tcss450/group8project/ui/chat/ChatCreateViewModel.java" afterDir="false" />
@@ -47,6 +48,10 @@
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/json_keys.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/json_keys.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/uw/tcss450/group8project/ui/chat/ChatFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/uw/tcss450/group8project/ui/chat/ChatFragment.java" afterDir="false" />
+>>>>>>> 63c0b4fb4b239c52af255f5e885dc9ee12906cec
       <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -54,7 +59,11 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+<<<<<<< HEAD
   <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\Zhaoyu Xu\.android\avd\Pixel_5_API_31.avd]" />
+=======
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/andrewlau/.android/avd/Pixel_5_API_31.avd]" />
+>>>>>>> 63c0b4fb4b239c52af255f5e885dc9ee12906cec
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -101,10 +110,17 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+<<<<<<< HEAD
         <option value="resourceFile" />
         <option value="layoutResourceFile" />
         <option value="Class" />
         <option value="navigationResourceFile" />
+=======
+        <option value="layoutResourceFile" />
+        <option value="valueResourceFile" />
+        <option value="Class" />
+        <option value="resourceFile" />
+>>>>>>> 63c0b4fb4b239c52af255f5e885dc9ee12906cec
       </list>
     </option>
   </component>
@@ -132,6 +148,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+<<<<<<< HEAD
     &quot;android-custom-view/Users/ledagra/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.4.0-beta01/4609f0eac57d146f2f30d34a6288a469235a32ca/material-1.4.0-beta01-sources.jar!/com/google/android/material/navigation/NavigationBarView.java_SELECTED&quot;: &quot;NavigationBarView&quot;,
     &quot;android-custom-view/Users/ledagra/Library/Android/sdk/sources/android-33/android/view/View.java_SELECTED&quot;: &quot;View&quot;,
     &quot;android-custom-view/Users/ledagra/Library/Android/sdk/sources/android-33/android/view/ViewGroup.java_SELECTED&quot;: &quot;ViewGroup&quot;,
@@ -152,6 +169,17 @@
       <recent name="edu.uw.tcss450.group8project.model" />
     </key>
   </component>
+=======
+    &quot;android-custom-view/Users/andrewlau/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.1.0/f2bdf79e1977939817f54a9d3e2f6bc52b63bdd0/recyclerview-1.1.0-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED&quot;: &quot;RecyclerView&quot;,
+    &quot;android-custom-view/Users/ledagra/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.4.0-beta01/4609f0eac57d146f2f30d34a6288a469235a32ca/material-1.4.0-beta01-sources.jar!/com/google/android/material/navigation/NavigationBarView.java_SELECTED&quot;: &quot;NavigationBarView&quot;,
+    &quot;android-custom-view/Users/ledagra/Library/Android/sdk/sources/android-33/android/view/View.java_SELECTED&quot;: &quot;View&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;com.intellij.openapi.externalSystem.service.settings.ExternalSystemGroupConfigurable&quot;: &quot;ALL&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/xuzha/Desktop/TCSS450/HuskyTalk/Team-8-TCSS-450&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Mercurial&quot;
+  }
+}</component>
+>>>>>>> 63c0b4fb4b239c52af255f5e885dc9ee12906cec
   <component name="RunManager">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="Group8Project.app.main" />
