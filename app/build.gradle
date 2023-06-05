@@ -1,14 +1,18 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 33
+    compileSdk 33
 
     buildFeatures {
         viewBinding true
     }
 
+    dataBinding {
+        enabled = true
+    }
+
     defaultConfig {
-        applicationId "edu.uw.tcss450.lab3_authentication"
+        applicationId "edu.uw.tcss450.group8project"
         minSdkVersion 24
         targetSdkVersion 33
         versionCode 1
@@ -27,7 +31,8 @@ android {
         sourceCompatibility = 1.8
         targetCompatibility = 1.8
     }
-    namespace 'edu.uw.tcss450.lab3_authentication'
+    namespace 'edu.uw.tcss450.group8project'
+    buildToolsVersion '33.0.2'
 
 }
 
@@ -35,8 +40,15 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.core:core-splashscreen:1.0.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    //noinspection GradleDependency
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
+    //noinspection GradleDependency
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
+    //noinspection GradleDependency
+    implementation 'com.google.android.material:material:1.4.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
@@ -44,6 +56,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui:2.5.3'
     apply plugin: "androidx.navigation.safeargs"
     implementation 'com.android.volley:volley:1.2.1'
-
-
+    implementation 'com.auth0:java-jwt:3.14.0'
+    implementation 'com.auth0.android:jwtdecode:2.0.0'
+    implementation 'me.pushy:sdk:1.0.90'
 }
