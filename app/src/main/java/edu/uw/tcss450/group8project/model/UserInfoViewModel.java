@@ -6,16 +6,17 @@ import androidx.lifecycle.ViewModelProvider;
 
 public class UserInfoViewModel extends ViewModel {
 
-    private final String mEmail;
+    private final String mUsername;
     private final String mJwt;
 
-    private UserInfoViewModel(String email, String jwt) {
-        mEmail = email;
+
+    private UserInfoViewModel(String username, String jwt) {
+        mUsername = username;
         mJwt = jwt;
     }
 
-    public String getEmail() {
-        return mEmail;
+    public String getmUsername() {
+        return mUsername;
     }
 
     public String getmJwt() {
@@ -24,11 +25,11 @@ public class UserInfoViewModel extends ViewModel {
 
     public static class UserInfoViewModelFactory implements ViewModelProvider.Factory {
 
-        private final String email;
+        private final String mUsername;
         private final String jwt;
 
-        public UserInfoViewModelFactory(String email, String jwt) {
-            this.email = email;
+        public UserInfoViewModelFactory(String username, String jwt) {
+            this.mUsername = username;
             this.jwt = jwt;
         }
 
@@ -36,7 +37,7 @@ public class UserInfoViewModel extends ViewModel {
         @Override
         public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
             if (modelClass == UserInfoViewModel.class) {
-                return (T) new UserInfoViewModel(email, jwt);
+                return (T) new UserInfoViewModel(mUsername, jwt);
             }
             throw new IllegalArgumentException(
                     "Argument must be: " + UserInfoViewModel.class);

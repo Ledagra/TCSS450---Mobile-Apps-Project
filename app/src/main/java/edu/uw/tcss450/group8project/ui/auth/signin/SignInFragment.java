@@ -108,8 +108,8 @@ public class SignInFragment extends Fragment {
             // longer or shorter time period, change the expiration time when the JWT is
             // created on the web service.
             if(!jwt.isExpired(0)) {
-                String email = jwt.getClaim("email").asString();
-                navigateToSuccess(email, token);
+                String username = jwt.getClaim("username").asString();
+                navigateToSuccess(username, token);
                 return;
             }
         }
@@ -141,10 +141,10 @@ public class SignInFragment extends Fragment {
 
     /**
      * Helper to abstract the navigation to the Activity past Authentication.
-     * @param email users email
+     * @param username users username
      * @param jwt the JSON Web Token supplied by the server
      */
-    private void navigateToSuccess(final String email, final String jwt) {
+    private void navigateToSuccess(final String username, final String jwt) {
         if (mBinding.switchSignin.isChecked()) {
             SharedPreferences prefs =
                     getActivity().getSharedPreferences(
@@ -155,7 +155,7 @@ public class SignInFragment extends Fragment {
         }
         Navigation.findNavController(getView())
                 .navigate(SignInFragmentDirections
-                        .actionLoginFragmentToMainActivity(email, jwt));
+                        .actionLoginFragmentToMainActivity(username, jwt));
         //Remove THIS activity from the Task list. Pops off the backstack
         getActivity().finish();
     }
@@ -180,7 +180,7 @@ public class SignInFragment extends Fragment {
                 try {
                     mUserViewModel = new ViewModelProvider(getActivity(),
                             new UserInfoViewModel.UserInfoViewModelFactory(
-                                    mBinding.editEmail.getText().toString(),
+                                    response.getString("username"),
                                     response.getString("token")
                             )).get(UserInfoViewModel.class);
                     sendPushyToken();
@@ -215,7 +215,7 @@ public class SignInFragment extends Fragment {
                         "Error Authenticating on Push Token. Please contact support");
             } else {
                 navigateToSuccess(
-                        mBinding.editEmail.getText().toString(),
+                        mUserViewModel.getmUsername(),
                         mUserViewModel.getmJwt()
                 );
             }

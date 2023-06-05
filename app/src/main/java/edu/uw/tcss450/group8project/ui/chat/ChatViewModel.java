@@ -189,19 +189,13 @@ public class ChatViewModel extends AndroidViewModel {
                 ChatMessage cMessage = new ChatMessage(
                         message.getInt("messageid"),
                         message.getString("message"),
-                        message.getString("email"),
+                        message.getString("username"),
                         message.getString("timestamp")
                 );
                 if (!list.contains(cMessage)) {
                     // don't add a duplicate
                     list.add(0, cMessage);
-                } else {
-                    // this shouldn't happen but could with the asynchronous
-                    // nature of the application
-                    Log.wtf("Chat message already received",
-                            "Or duplicate id:" + cMessage.getMessageId());
                 }
-
             }
             //inform observers of the change (setValue)
             getOrCreateMapEntry(response.getInt("chatId")).setValue(list);

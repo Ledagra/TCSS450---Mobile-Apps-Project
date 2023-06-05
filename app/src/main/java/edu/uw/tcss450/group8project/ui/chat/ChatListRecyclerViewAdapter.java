@@ -8,7 +8,12 @@ import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
 
 import edu.uw.tcss450.group8project.R;
 import edu.uw.tcss450.group8project.databinding.FragmentChatCardBinding;
@@ -16,9 +21,10 @@ import edu.uw.tcss450.group8project.databinding.FragmentChatCardBinding;
 public class ChatListRecyclerViewAdapter extends RecyclerView.Adapter<ChatListRecyclerViewAdapter.ChatViewHolder> {
     // TODO: Implement the ViewModel
     private final List<ChatPreview> mChatPreviews;
-    public ChatListRecyclerViewAdapter(List<ChatPreview> items) {
+    private final String mUsername;
+    public ChatListRecyclerViewAdapter(List<ChatPreview> items, String username) {
         this.mChatPreviews = items;
-
+        this.mUsername = username;
     }
     @NonNull
     @Override
@@ -50,7 +56,8 @@ public class ChatListRecyclerViewAdapter extends RecyclerView.Adapter<ChatListRe
                 public void onClick(View view) {
                     Navigation.findNavController(mView)
                             .navigate(ChatListFragmentDirections
-                                    .actionChatListFragmentToChatFragment());
+                                    .actionChatListFragmentToChatFragment(mChatPreview.getmChatId(),
+                                                                          mChatPreview.getmChatname()));
                 }
             });
             binding = FragmentChatCardBinding.bind(view);
@@ -58,9 +65,19 @@ public class ChatListRecyclerViewAdapter extends RecyclerView.Adapter<ChatListRe
         void setChat(final ChatPreview chatPreview) {
             mChatPreview = chatPreview;
             binding.textChatCardUsername.setText(chatPreview.getmChatname());
-            binding.textChatCardTime.setText(chatPreview.getmTime());
             binding.testChatCardPreview.setText(chatPreview.getmPreview());
 
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
+            formatter.setTimeZone(TimeZone.getTimeZone("PDT"));
+            Date date;
+            try {
+                date = formatter.parse(chatPreview.getmTime());
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
+            formatter = new SimpleDateFormat("EEE, hh:mm aa", Locale.ENGLISH);
+            String messageTime = formatter.format(date);
+            binding.textChatCardTime.setText(messageTime);
         }
     }
 }

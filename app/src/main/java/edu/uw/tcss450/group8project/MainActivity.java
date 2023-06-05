@@ -8,37 +8,27 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import android.app.SearchManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.SearchView;
 
-import com.auth0.android.jwt.JWT;
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
+
+import java.util.Objects;
 
 import edu.uw.tcss450.group8project.databinding.ActivityMainBinding;
 import edu.uw.tcss450.group8project.model.NewMessageCountViewModel;
 import edu.uw.tcss450.group8project.model.UserInfoViewModel;
-import edu.uw.tcss450.group8project.R;
 import edu.uw.tcss450.group8project.services.PushReceiver;
 import edu.uw.tcss450.group8project.ui.chat.ChatMessage;
 import edu.uw.tcss450.group8project.ui.chat.ChatViewModel;
-import edu.uw.tcss450.group8project.model.UserInfoViewModel;
-import edu.uw.tcss450.group8project.ui.weather.WeatherViewModel;
 
 /**
  * Main Activity for the app.
@@ -60,7 +50,7 @@ public final class MainActivity extends AppCompatActivity {
         MainActivityArgs args = MainActivityArgs.fromBundle(getIntent().getExtras());
 
         new ViewModelProvider(this,
-                new UserInfoViewModel.UserInfoViewModelFactory(args.getEmail(), args.getJwt())
+                new UserInfoViewModel.UserInfoViewModelFactory(args.getUsername(), args.getJwt())
         ).get(UserInfoViewModel.class);
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
@@ -83,7 +73,7 @@ public final class MainActivity extends AppCompatActivity {
         mNewMessageModel = new ViewModelProvider(this).get(NewMessageCountViewModel.class);
 
         navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
-            if (destination.getId() == R.id.navigation_chat) {
+            if (destination.getId() == R.id.navigation_chatlist) {
                 //When the user navigates to the chats page, reset the new message count.
                 //This will need some extra logic for your project as it should have
                 //multiple chat rooms.
@@ -91,7 +81,7 @@ public final class MainActivity extends AppCompatActivity {
             }
         });
         mNewMessageModel.addMessageCountObserver(this, count -> {
-            BadgeDrawable badge = binding.navView.getOrCreateBadge(R.id.navigation_chat);
+            BadgeDrawable badge = binding.navView.getOrCreateBadge(R.id.navigation_chatlist);
             badge.setMaxCharacterCount(2);
             if (count > 0) {
                 //new messages! update and show the notification badge.
@@ -109,7 +99,7 @@ public final class MainActivity extends AppCompatActivity {
      * A BroadcastReceiver that listens for messages sent from PushReceiver
      */
     private class MainPushMessageReceiver extends BroadcastReceiver {
-        private ChatViewModel mModel =
+        private final ChatViewModel mModel =
                 new ViewModelProvider(MainActivity.this)
                         .get(ChatViewModel.class);
         @Override
@@ -122,7 +112,7 @@ public final class MainActivity extends AppCompatActivity {
                 ChatMessage cm = (ChatMessage) intent.getSerializableExtra("chatMessage");
                 //If the user is not on the chat screen, update the
                 // NewMessageCountView Model
-                if (nd.getId() != R.id.navigation_chat) {
+                if (Objects.requireNonNull(nd).getId() != R.id.navigation_chat) {
                     mNewMessageModel.increment();
                 }
                 //Inform the view model holding chatroom messages of the new
@@ -178,7 +168,10 @@ public final class MainActivity extends AppCompatActivity {
                         Context.MODE_PRIVATE);
         prefs.edit().remove(getString(R.string.keys_prefs_jwt)).apply();
         //Go back to login page
-        finishAndRemoveTask();
+        finish();
+        Intent signOutIntent = new Intent(this, AuthActivity.class);
+        signOutIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(signOutIntent);
     }
 
 //    @Override

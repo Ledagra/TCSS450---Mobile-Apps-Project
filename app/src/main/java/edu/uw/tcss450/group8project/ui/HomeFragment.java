@@ -39,7 +39,8 @@ public final class HomeFragment extends Fragment {
         UserInfoViewModel model = new ViewModelProvider(getActivity())
                 .get(UserInfoViewModel.class);
 
+        System.out.print(model.getmUsername());
         FragmentHomeBinding.bind(getView())
-                .textHello.setText("Hello " + model.getEmail());
+                .textHello.setText("Hello " + model.getmUsername());
     }
 }

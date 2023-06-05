@@ -1,4 +1,4 @@
-package edu.uw.tcss450.group8project.ui.chat;
+package edu.uw.tcss450.group8project.ui.friends;
 
 import android.app.Application;
 import android.util.Log;
@@ -28,70 +28,52 @@ import java.util.function.IntFunction;
 
 import edu.uw.tcss450.group8project.R;
 
-public class ChatListViewModel extends AndroidViewModel {
-    private MutableLiveData<List<ChatPreview>> mChatList;
-    public ChatListViewModel(@NonNull Application application) {
+public class FriendListViewModel extends AndroidViewModel {
+    private MutableLiveData<List<Friend>> mFriendList;
+    public FriendListViewModel(@NonNull Application application) {
         super(application);
-        mChatList = new MutableLiveData<>();
-        mChatList.setValue(new ArrayList<>());
+        mFriendList = new MutableLiveData<>();
+        mFriendList.setValue(new ArrayList<>());
     }
-    public void addChatListObserver(@NonNull LifecycleOwner owner,
-                                    @NonNull Observer<? super List<ChatPreview>> observer) {
-        mChatList.observe(owner, observer);
+    public void addFriendListObserver(@NonNull LifecycleOwner owner,
+                                      @NonNull Observer<? super List<Friend>> observer) {
+        mFriendList.observe(owner, observer);
     }
-
     private void handleError(final VolleyError error) {
         //you should add much better error handling in a production release.
         //i.e. YOUR PROJECT
         Log.e("CONNECTION ERROR", error.getLocalizedMessage());
         throw new IllegalStateException(error.getMessage());
     }
-
     private void handleResult(final JSONObject result) {
         IntFunction<String> getString =
                 getApplication().getResources()::getString;
         try {
-            JSONObject root = result;
-            if (root.has(getString.apply(R.string.keys_json_success))) {
-                JSONArray nameJSON =
-                        root.getJSONArray(getString.apply(
-                                R.string.keys_json_chat_name));
-                JSONArray previewsJSON = root.getJSONArray(
-                        getString.apply(R.string.keys_json_chat_previews));
-                for(int i = 0; i < previewsJSON.length(); i++) {
-                    JSONObject jsonChat = previewsJSON.getJSONObject(i);
-                    JSONObject jsonName = nameJSON.getJSONObject(i);
-                    ChatPreview chatPreview = new ChatPreview.Builder(
-                            jsonChat.getString(
-                                    getString.apply(
-                                            R.string.keys_json_chat_timestamp)),
-                            jsonName.getString(
-                                    getString.apply(
-                                            R.string.keys_json_chat_chatname)),
-                            jsonChat.getInt(
-                                    getString.apply(
-                                            R.string.keys_json_chat_chatid)))
-                            .addPreview(jsonChat.getString(
-                                    getString.apply(
-                                            R.string.keys_json_chat_preview)))
+            if (result.has(getString.apply(R.string.keys_json_success))) {
+                JSONArray friendJSON = result.getJSONArray(getString.apply(
+                                                           R.string.keys_json_friend_friends));
+                for (int i = 0; i < friendJSON.length(); i++) {
+                    JSONObject jsonFriend = friendJSON.getJSONObject(i);
+                    Friend friend = new Friend.Builder(
+                            jsonFriend.getString(getString.apply(R.string.keys_json_friend_username)),
+                            jsonFriend.getString(getString.apply(R.string.keys_json_friend_email)))
                             .build();
-                        if (!Objects.requireNonNull(mChatList.getValue()).contains(chatPreview)) {
-                            mChatList.getValue().add(chatPreview);
-                        }
+                    if (!Objects.requireNonNull(mFriendList.getValue()).contains(friend)) {
+                        mFriendList.getValue().add(friend);
                     }
+                }
             } else {
                 Log.e("ERROR!", "No response");
             }
-        } catch (JSONException e) {
+        }  catch (JSONException e) {
             e.printStackTrace();
             Log.e("ERROR!", e.getMessage());
         }
-        mChatList.setValue(mChatList.getValue());
+        mFriendList.setValue(mFriendList.getValue());
     }
-
     public void connectGet(final String jwt) {
         String url = getApplication().getResources().getString(R.string.heroku_url) +
-                "previews";
+                "friends";
         Request request = new JsonObjectRequest(
                 Request.Method.GET,
                 url,

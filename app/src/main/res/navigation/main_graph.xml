@@ -23,15 +23,37 @@
     <fragment
         android:id="@+id/navigation_chatlist"
         android:name="edu.uw.tcss450.group8project.ui.chat.ChatListFragment"
-        android:label="fragment_chat_list"
-        tools:layout="@layout/fragment_chat_list" >
+        android:label="@string/title_messages"
+        tools:layout="@layout/fragment_chat_list">
         <action
             android:id="@+id/action_chatListFragment_to_chatFragment"
             app:destination="@id/navigation_chat" />
+        <action
+            android:id="@+id/action_navigation_chatlist_to_chatCreateFragment"
+            app:destination="@id/chatCreateFragment" />
     </fragment>
     <fragment
         android:id="@+id/navigation_chat"
         android:name="edu.uw.tcss450.group8project.ui.chat.ChatFragment"
-        android:label="fragment_chat"
-        tools:layout="@layout/fragment_chat" />
+        android:label="{chatname}"
+        tools:layout="@layout/fragment_chat" >
+        <argument android:name="chatid"
+            app:argType="integer" />
+        <argument
+            android:name="chatname"
+            app:argType="string"
+            app:nullable="false"/>
+        <action
+            android:id="@+id/action_navigation_chat_to_navigation_chatlist"
+            app:destination="@id/navigation_chatlist" />
+    </fragment>
+    <fragment
+        android:id="@+id/chatCreateFragment"
+        android:name="edu.uw.tcss450.group8project.ui.chat.ChatCreateFragment"
+        android:label="@string/title_chat_create"
+        tools:layout="@layout/fragment_chat_create">
+        <action
+            android:id="@+id/action_chatCreateFragment_to_navigation_chatlist"
+            app:destination="@id/navigation_chatlist" />
+    </fragment>
 </navigation>

@@ -7,6 +7,10 @@ android {
         viewBinding true
     }
 
+    dataBinding {
+        enabled = true
+    }
+
     defaultConfig {
         applicationId "edu.uw.tcss450.group8project"
         minSdkVersion 24

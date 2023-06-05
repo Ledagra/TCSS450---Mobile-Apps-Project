@@ -39,7 +39,7 @@
         android:name="edu.uw.tcss450.group8project.MainActivity"
         android:label="MainActivity" >
         <argument
-            android:name="email"
+            android:name="username"
             app:argType="string" />
         <argument
             android:name="jwt"

@@ -11,14 +11,19 @@ public class Friend implements Serializable {
     /** The friend's email. */
     private final String mEmail;  // email of the friend
 
-    /**
-     * Constructor for a Friend object.
-     * @param name name of friend
-     * @param email email of friend
-     */
-    public Friend(final String name, final String email) {
-        this.mName = name;
-        this.mEmail = email;
+    public static class Builder {
+        private final String mName;
+        private final String mEmail;
+        public Builder(String name, String email) {
+            this.mName = name;
+            this.mEmail = email;
+        }
+        public Friend build() { return new Friend(this); }
+    }
+
+    public Friend(final Builder builder) {
+        this.mName = builder.mName;
+        this.mEmail = builder.mEmail;
     }
 
     /**
@@ -35,5 +40,16 @@ public class Friend implements Serializable {
      */
     public String getEmail() {
         return mEmail;
+    }
+    @Override
+    public boolean equals(Object obj) {
+        boolean result = false;
+
+        if (obj instanceof Friend) {
+            Friend ptr = (Friend) obj;
+            result = (ptr.getName()).equals(this.getName())
+                    && (ptr.getEmail()).equals(this.getEmail());
+        }
+        return result;
     }
 }
